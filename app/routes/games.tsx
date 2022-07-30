@@ -1,13 +1,40 @@
-import type { LinksFunction } from "@remix-run/node";
-import { Outlet, Link } from "@remix-run/react";
+import type { Game } from "@prisma/client";
+import type { LinksFunction, LoaderFunction } from "@remix-run/node";
+import { json } from "@remix-run/node";
+import { Outlet, Link, useLoaderData } from "@remix-run/react";
 
 import stylesUrl from "~/styles/games.css";
+import { db } from "~/utils/db.server";
 
 export const links: LinksFunction = () => {
   return [{ rel: "stylesheet", href: stylesUrl }];
 };
+
+type LoaderData = {
+  gameListItems: Array<Pick<Game, 'id' | 'name' >>;
+};
+
+export const loader: LoaderFunction = async () => {
+  const data: LoaderData = {
+    gameListItems: await db.game.findMany({
+      take: 5,
+      select: { id: true, name: true },
+      orderBy: { createdAt: 'desc' },
+    }),
+  };
+  return json(data);
+};
+
 // to='.' - refresh this page
 export default function GamesRoute() {
+  const data = useLoaderData<LoaderData>();
+
+  const game = data.gameListItems.map((item) => (
+    <li key={item.id}>
+      <Link to={item.id}>{item.name}</Link>
+    </li>
+  ));
+
   return (
     <div className="games-layout">
       <header className="games-header">
@@ -26,9 +53,7 @@ export default function GamesRoute() {
             <Link to=".">Get a random joke</Link>
             <p>Here are a few more games to check out:</p>
             <ul>
-              <li>
-                <Link to="some-joke-id">Hippo</Link>
-              </li>
+              {game}
             </ul>
             <Link to="new" className="button">
               Add your own
