@@ -6,6 +6,10 @@ import { db } from "~/utils/db.server";
 
 type LoaderData = { randomGame: Game };
 
+export function ErrorBoundary() {
+  return <div className="error-container">I did a whoopsies.</div>;
+}
+
 export const loader: LoaderFunction = async () => {
   const count = await db.game.count();
   const randomRowNumber = Math.floor(Math.random() * count);

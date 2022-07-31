@@ -5,6 +5,14 @@ import { useActionData } from "@remix-run/react";
 import { db } from "~/utils/db.server";
 import { requireUserId } from "~/utils/session.server";
 
+export function ErrorBoundary() {
+  return (
+    <div className="error-container">
+      Something unexpected went wrong. Sorry about that.
+    </div>
+  );
+}
+
 function validateGameContent(content: string) {
   if (content.length < 10) {
     return "This game is too short";
