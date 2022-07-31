@@ -5,27 +5,32 @@ import { Outlet, Link, useLoaderData } from "@remix-run/react";
 
 import stylesUrl from "~/styles/games.css";
 import { db } from "~/utils/db.server";
+import { getUser } from "~/utils/session.server";
 
 export const links: LinksFunction = () => {
   return [{ rel: "stylesheet", href: stylesUrl }];
 };
 
 type LoaderData = {
-  gameListItems: Array<Pick<Game, 'id' | 'name' >>;
+  user: Awaited<ReturnType<typeof getUser>>;
+  gameListItems: Array<Pick<Game, "id" | "name">>;
 };
 
-export const loader: LoaderFunction = async () => {
-  const data: LoaderData = {
-    gameListItems: await db.game.findMany({
-      take: 5,
-      select: { id: true, name: true },
-      orderBy: { createdAt: 'desc' },
-    }),
+export const loader: LoaderFunction = async ({ request }) => {
+  const gameListItems = await db.game.findMany({
+    take: 5,
+    select: { id: true, name: true },
+    orderBy: { createdAt: "desc" },
+  });
+  const user = await getUser(request);
+
+  const data = {
+    gameListItems,
+    user,
   };
   return json(data);
 };
 
-// to='.' - refresh this page
 export default function GamesRoute() {
   const data = useLoaderData<LoaderData>();
 
@@ -45,6 +50,18 @@ export default function GamesRoute() {
               <span className="logo-medium">J🤪KES</span>
             </Link>
           </h1>
+          {data.user ? (
+            <div className="user-info">
+              <span>{`Hi ${data.user.username}`}</span>
+              <form action="/logout" method="post">
+                <button type="submit" className="button">
+                  Logout
+                </button>
+              </form>
+            </div>
+          ) : (
+            <Link to="/login">Login</Link>
+          )}
         </div>
       </header>
       <main className="games-main">
@@ -52,9 +69,7 @@ export default function GamesRoute() {
           <div className="games-list">
             <Link to=".">Get a random joke</Link>
             <p>Here are a few more games to check out:</p>
-            <ul>
-              {game}
-            </ul>
+            <ul>{game}</ul>
             <Link to="new" className="button">
               Add your own
             </Link>

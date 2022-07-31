@@ -1,7 +1,9 @@
-import { ActionFunction, json } from "@remix-run/node";
+import type { ActionFunction } from "@remix-run/node";
+import { json } from "@remix-run/node";
 import { redirect } from "@remix-run/node";
 import { useActionData } from "@remix-run/react";
 import { db } from "~/utils/db.server";
+import { requireUserId } from "~/utils/session.server";
 
 function validateGameContent(content: string) {
   if (content.length < 10) {
@@ -30,6 +32,7 @@ type ActionData = {
 const badRequest = (data: ActionData) => json(data, { status: 400 });
 
 export const action: ActionFunction = async ({ request }) => {
+  const userId = await requireUserId(request);
   const form = await request.formData();
   const name = form.get("name");
   const content = form.get("content");
@@ -53,7 +56,9 @@ export const action: ActionFunction = async ({ request }) => {
     });
   }
 
-  const game = await db.game.create({ data: fields });
+  const game = await db.game.create({
+    data: { ...fields, playerId: userId },
+  });
   return redirect(`/games/${game.id}`);
 };
 
