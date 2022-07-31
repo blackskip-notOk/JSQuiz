@@ -2,9 +2,9 @@ import { PrismaClient } from "@prisma/client";
 const db = new PrismaClient();
 
 async function seed() {
-  const admin = await db.user.create({
+  const kody = await db.user.create({
     data: {
-      username: "admin",
+      username: "kody",
       // this is a hashed version of "twixrox"
       passwordHash:
         "$2b$10$K7L1OJ45/4Y2nIvhRVpCe.FSmhDdWoXehVzJptJ/op0lSsvqNu/1u",
@@ -13,7 +13,7 @@ async function seed() {
 
   await Promise.all(
     getGames().map((game) => {
-      const data = { playerId: admin.id, ...game };
+      const data = { playerId: kody.id, ...game };
       return db.game.create({ data });
     })
   );
