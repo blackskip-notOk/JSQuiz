@@ -7,6 +7,7 @@ import type {
 import { redirect } from "@remix-run/node";
 import { json } from "@remix-run/node";
 import { Link, useCatch, useLoaderData, useParams } from "@remix-run/react";
+import { GameDisplay } from "~/components/game";
 import { db } from "~/utils/db.server";
 import { getUserId, requireUserId } from "~/utils/session.server";
 
@@ -73,21 +74,7 @@ export const action: ActionFunction = async ({ request, params }) => {
 
 export default function GameRoute() {
   const data = useLoaderData<LoaderData>();
-  return (
-    <div>
-      <p>It's one of games</p>
-      <p>{data.game.content}</p>
-      <Link to=".">{data.game.name} Permalink</Link>
-      {data.isOwner ? (
-        <form method="post">
-          <input type="hidden" name="_method" value="delete" />
-          <button type="submit" className="button">
-            Delete
-          </button>
-        </form>
-      ) : null}
-    </div>
-  );
+  return <GameDisplay game={data.game} isOwner={data.isOwner} />;
 }
 
 export function CatchBoundary() {
@@ -121,7 +108,9 @@ export function CatchBoundary() {
   }
 }
 
-export function ErrorBoundary() {
+export function ErrorBoundary({ error }: { error: Error }) {
+  console.error(error);
+
   const { gameId } = useParams();
   return (
     <div className="error-container">{`There was an error loading joke by the id ${gameId}. Sorry.`}</div>

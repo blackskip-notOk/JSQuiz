@@ -1,7 +1,8 @@
 import type { ActionFunction, LoaderFunction } from "@remix-run/node";
 import { json } from "@remix-run/node";
 import { redirect } from "@remix-run/node";
-import { Form, Link, useActionData, useCatch } from "@remix-run/react";
+import { Form, Link, useActionData, useCatch, useTransition } from "@remix-run/react";
+import { GameDisplay } from "~/components/game";
 import { db } from "~/utils/db.server";
 import { getUserId, requireUserId } from "~/utils/session.server";
 
@@ -74,6 +75,27 @@ export const action: ActionFunction = async ({ request }) => {
 
 export default function NewGameRoute() {
   const actionData = useActionData<ActionData>();
+  const transition = useTransition();
+
+  if (transition.submission) {
+    const name = transition.submission.formData.get("name");
+    const content =
+      transition.submission.formData.get("content");
+    if (
+      typeof name === "string" &&
+      typeof content === "string" &&
+      !validateGameContent(content) &&
+      !validateGameName(name)
+    ) {
+      return (
+        <GameDisplay
+          game={{ name, content }}
+          isOwner={true}
+          canDelete={false}
+        />
+      );
+    }
+  }
 
   return (
     <div>
@@ -151,7 +173,9 @@ export function CatchBoundary() {
 }
 
 
-export function ErrorBoundary() {
+export function ErrorBoundary({ error }: { error: Error }) {
+  console.error(error);
+
   return (
     <div className="error-container">
       Something unexpected went wrong. Sorry about that.
