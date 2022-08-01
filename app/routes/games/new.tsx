@@ -1,7 +1,7 @@
 import type { ActionFunction, LoaderFunction } from "@remix-run/node";
 import { json } from "@remix-run/node";
 import { redirect } from "@remix-run/node";
-import { Link, useActionData, useCatch } from "@remix-run/react";
+import { Form, Link, useActionData, useCatch } from "@remix-run/react";
 import { db } from "~/utils/db.server";
 import { getUserId, requireUserId } from "~/utils/session.server";
 
@@ -78,7 +78,7 @@ export default function NewGameRoute() {
   return (
     <div>
       <p>Create a new Game</p>
-      <form method="post">
+      <Form method="post">
         <div>
           <label>
             Name:{" "}
@@ -132,7 +132,7 @@ export default function NewGameRoute() {
             Add
           </button>
         </div>
-      </form>
+      </Form>
     </div>
   );
 }

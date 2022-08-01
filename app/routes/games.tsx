@@ -36,7 +36,7 @@ export default function GamesRoute() {
 
   const game = data.gameListItems.map((item) => (
     <li key={item.id}>
-      <Link to={item.id}>{item.name}</Link>
+      <Link to={item.id} prefetch='intent' >{item.name}</Link>
     </li>
   ));
 
