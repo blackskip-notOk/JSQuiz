@@ -1,4 +1,4 @@
-import type { ActionFunction, LinksFunction } from "@remix-run/node";
+import type { ActionFunction, LinksFunction, MetaFunction } from "@remix-run/node";
 import { json } from "@remix-run/node";
 import { Link, useActionData, useSearchParams } from "@remix-run/react";
 import { db } from "~/utils/db.server";
@@ -8,6 +8,14 @@ import stylesUrl from "../styles/login.css";
 
 export const links: LinksFunction = () => {
   return [{ rel: "stylesheet", href: stylesUrl }];
+};
+
+export const meta: MetaFunction = () => {
+  return {
+    title: "JS Quiz | Login",
+    description:
+      "Login to take a part or create your game!",
+  };
 };
 
 function validateUsername(username: unknown) {

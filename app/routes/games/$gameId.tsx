@@ -1,10 +1,31 @@
 import type { Game } from "@prisma/client";
-import type { ActionFunction, LoaderFunction } from "@remix-run/node";
+import type {
+  ActionFunction,
+  LoaderFunction,
+  MetaFunction,
+} from "@remix-run/node";
 import { redirect } from "@remix-run/node";
 import { json } from "@remix-run/node";
 import { Link, useCatch, useLoaderData, useParams } from "@remix-run/react";
 import { db } from "~/utils/db.server";
 import { getUserId, requireUserId } from "~/utils/session.server";
+
+export const meta: MetaFunction = ({
+  data,
+}: {
+  data: LoaderData | undefined;
+}) => {
+  if (!data) {
+    return {
+      title: "No Game",
+      description: "No game found",
+    };
+  }
+  return {
+    title: `"${data.game.name}" game`,
+    description: `Enjoy the "${data.game.name}" game and much more`,
+  };
+};
 
 type LoaderData = { game: Game; isOwner: boolean };
 
