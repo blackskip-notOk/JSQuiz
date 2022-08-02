@@ -1,12 +1,9 @@
-// This is your Prisma schema file,
-// learn more about it in the docs: https://pris.ly/d/prisma-schema
-
 generator client {
   provider = "prisma-client-js"
 }
 
 datasource db {
-  provider = "sqlite"
+  provider = "cockroachdb"
   url      = env("DATABASE_URL")
 }
 
@@ -16,15 +13,43 @@ model User {
   updatedAt    DateTime @updatedAt
   username     String   @unique
   passwordHash String
+  role         Role @default(PLAYER)
   games        Game[]
+  questions    Question[]
 }
+
+model Question {
+  id           String   @id @default(uuid())
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+  title        String
+  author       User @relation(fields: [authorId], references: [id])
+  authorId     String
+  theme        Theme
+  games        Game @relation(fields: [gameId], references: [id])
+  gameId       String
+}
+
+
 
 model Game {
   id         String   @id @default(uuid())
-  playerId   String
-  player     User     @relation(fields: [playerId], references: [id], onDelete: Cascade)
   createdAt  DateTime @default(now())
   updatedAt  DateTime @updatedAt
   name       String
   content    String
+  questions  Question[]
+  players    User[]
+}
+
+enum Role {
+  PLAYER
+  ADMIN
+}
+
+enum Theme {
+  HTML
+  CSS
+  JAVASCRIPT
+  OTHER
 }
