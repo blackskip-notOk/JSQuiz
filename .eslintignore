@@ -1,0 +1,6 @@
+build;
+node_modules;
+dist.idea / yarn - debug.log;
+yarn - error.log;
+/.git;
+/.vscode;

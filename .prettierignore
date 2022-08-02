@@ -1,0 +1,16 @@
+# Ignore artifacts:
+.cache
+.husky
+.build
+node_modules
+prisma
+public
+.idea/
+.env
+remix.env.d.ts
+yarn-debug.log
+yarn-error.log
+yarn.lock
+
+# Ignore all HTML files:
+*.html
