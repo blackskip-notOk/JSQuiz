@@ -20,12 +20,12 @@ import i18next from "~/i18n/i18n.server";
 
 type LoaderData = { locale: string };
 
-export let loader: LoaderFunction = async ({ request }) => {
+export const loader: LoaderFunction = async ({ request }) => {
   let locale = await i18next.getLocale(request);
   return json<LoaderData>({ locale });
 };
 
-export let handle = {
+export const handle = {
   i18n: "translation",
 };
 

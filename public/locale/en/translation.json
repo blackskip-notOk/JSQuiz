@@ -37,5 +37,11 @@
     },
     "description": {
         "headerDefault": "App to play in JS-Quiz with Remix framework!"
-    }
+    },
+	"footer": {
+		"date": "Todayn is {{date, DATE_HUGE}}",
+		"date_morning": "Today is {{date, DATE_HUGE}} | Good morning!",
+		"date_afternoon": "Today is {{date, DATE_HUGE}} | Good afternoon!",
+        "date_evening": "Today is {{date, DATE_HUGE}} | Good evening!"
+	}
 }
