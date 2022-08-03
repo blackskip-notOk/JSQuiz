@@ -1,0 +1,28 @@
+:root {
+    --color-black: hsl(0, 0%, 0%);
+    --color-white: hsl(0, 0%, 100%);
+    --color-blue-100: hsl(214, 100%, 95%);
+    --color-blue-500: hsl(215, 100%, 65%);
+    --color-slate-500: hsl(230, 16%, 71%);
+    --color-gray-100: hsl(0, 0%, 97%);
+    --color-gray-200: hsl(218, 19%, 92%);
+    --color-gray-300: hsl(214, 11%, 88%);
+    --color-gray-400: hsl(212, 6%, 54%);
+    --color-gray-500: hsl(227, 8%, 35%);
+    --color-gray-600: hsl(233, 5%, 31%);
+    --color-gray-700: hsl(229, 12%, 26%);
+    --color-gray-800: hsl(229, 11%, 20%);
+    --color-gray-900: hsl(233, 13%, 14%);
+    --color-green-100: hsl(140, 60%, 94%);
+    --color-green-500: hsl(138, 61%, 49%);
+    --color-green-600: hsl(107, 65%, 57%);
+    --color-red-500: hsl(0, 100%, 64%);
+    --color-yellow-500: hsl(47, 100%, 63%);
+    --color-team-unknown: hsl(212, 6%, 54%);
+    --color-team-blue: hsl(207, 100%, 61%);
+    --color-team-red: hsl(0, 100%, 64%);
+    --color-team-yellow: hsl(50, 100%, 31%);
+    --color-yellow-500: hsl(50, 100%, 31%);
+    --color-yellow-500-inverted: hsl(47, 100%, 63%);
+}
+

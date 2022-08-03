@@ -30,8 +30,6 @@ model Question {
   gameId       String
 }
 
-
-
 model Game {
   id         String   @id @default(uuid())
   createdAt  DateTime @default(now())
