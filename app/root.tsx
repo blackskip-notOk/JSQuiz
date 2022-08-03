@@ -5,13 +5,29 @@ import {
   Outlet,
   Scripts,
   useCatch,
+  useLoaderData,
 } from "@remix-run/react";
 
 import globalStylesUrl from "./styles/global.css";
 import globalMediumStylesUrl from "./styles/global-medium.css";
 import globalLargeStylesUrl from "./styles/global-large.css";
-import type { LinksFunction, MetaFunction } from "@remix-run/node";
+import type { LinksFunction, LoaderFunction, MetaFunction } from "@remix-run/node";
+import { json } from "@remix-run/node";
 import type { ReactNode } from "react";
+import { useChangeLanguage } from "remix-i18next";
+import { useTranslation } from "react-i18next";
+import i18next from "~/i18n/i18n.server";
+
+type LoaderData = { locale: string };
+
+export let loader: LoaderFunction = async ({ request }) => {
+  let locale = await i18next.getLocale(request);
+  return json<LoaderData>({ locale });
+};
+
+export let handle = {
+  i18n: "translation",
+};
 
 export const links: LinksFunction = () => {
   return [
@@ -54,8 +70,12 @@ function Document({
   children: ReactNode;
   title?: string;
 }) {
+  const { locale } = useLoaderData<LoaderData>();
+  const { i18n } = useTranslation();
+  useChangeLanguage(locale);
+
   return (
-    <html lang="ru">
+    <html lang={locale} dir={i18n.dir()}>
       <head>
         <Meta />
         <meta charSet="utf-8" />

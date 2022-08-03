@@ -1,5 +1,6 @@
 import type { LinksFunction, MetaFunction } from '@remix-run/node';
 import { Link } from '@remix-run/react';
+import { Footer } from '~/components/footer';
 import stylesUrl from '~/styles/index.css';
 
 export const links: LinksFunction = () => {
@@ -26,6 +27,7 @@ export default function IndexRoute() {
 					</ul>
 				</nav>
 			</div>
+			<Footer />
 		</div>
 	);
 }
