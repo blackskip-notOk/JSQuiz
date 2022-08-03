@@ -1,0 +1,6 @@
+{
+	"date": "Сегодня {{date, DATE_HUGE}}",
+	"date_morning": "Сейчас {{date, DATE_HUGE}} | Доброе утро!",
+	"date_afternoon": "Сейчас {{date, DATE_HUGE}} | Добрый день!",
+	"date_evening": "Сейчас {{date, DATE_HUGE}} | Добрый вечер!"
+}

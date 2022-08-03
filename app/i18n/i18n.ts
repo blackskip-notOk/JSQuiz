@@ -1,5 +1,5 @@
 export default {
-    supportedLngs: ['en', 'ru'],
-    fallbackLng: 'ru',
-    react: {useSuspense: false},
+	supportedLngs: ['en', 'ru'],
+	fallbackLng: 'ru',
+	react: { useSuspense: false },
 };
