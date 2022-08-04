@@ -1,0 +1,15 @@
+.toggleContainer {
+	/* width: max-content; */
+	/* text-align: left; */
+	/* cursor: pointer; */
+}
+
+.button {
+	width: 100%;
+	background-color: transparent;
+	padding: 5px;
+}
+
+.span {
+	/* display: inline-block;
+}

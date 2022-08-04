@@ -4,6 +4,7 @@ import { Link } from '@remix-run/react';
 import { useTranslation } from 'react-i18next';
 
 import { Footer } from '~/components/footer';
+import { TranslationToggle, links as TranslationToggleLinks} from '~/components/translationToggle';
 import { Route } from '~/constants';
 import i18next from '~/i18n/i18n.server';
 
@@ -17,7 +18,7 @@ export const loader: LoaderFunction = async ({ request }) => {
 };
 
 export const links: LinksFunction = () => {
-	return [{ rel: 'stylesheet', href: stylesUrl }];
+	return [...TranslationToggleLinks(), { rel: 'stylesheet', href: stylesUrl }];
 };
 
 export const meta: MetaFunction = ({ data }) => {
@@ -33,6 +34,9 @@ export default function IndexRoute() {
 
 	return (
 		<div className='container'>
+			<header className='header'>
+				<TranslationToggle />
+			</header>
 			<div className='content'>
 				<h1>
 					JavaScript <span>Quiz</span>
@@ -51,7 +55,7 @@ export default function IndexRoute() {
 					</ul>
 				</nav>
 			</div>
-			<Footer />
+			<Footer className='footer' />
 		</div>
 	);
 }
