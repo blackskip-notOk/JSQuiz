@@ -15,6 +15,10 @@
     "strict": true,
     "forceConsistentCasingInFileNames": true,
     "preserveConstEnums": true,
+    "useDefineForClassFields": true,
+    "allowSyntheticDefaultImports": true,
+    "strictNullChecks": true,
+    "strictFunctionTypes": false,
     "paths": {
       "~/*": ["./app/*"]
     },
