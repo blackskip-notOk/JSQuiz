@@ -4,7 +4,7 @@ import { Link } from '@remix-run/react';
 import { useTranslation } from 'react-i18next';
 
 import { Footer } from '~/components/footer';
-import { TranslationToggle, links as TranslationToggleLinks} from '~/components/translationToggle';
+import { TranslationToggle, links as TranslationToggleLinks } from '~/components/translationToggle';
 import { Route } from '~/constants';
 import i18next from '~/i18n/i18n.server';
 

@@ -21,3 +21,8 @@ export const Route = {
 	games: 'games',
 	play: 'play',
 } as const;
+
+export const Flag = {
+	en: 'Flag_of_Australia',
+	ru: 'Flag_of_Russia',
+} as const;
