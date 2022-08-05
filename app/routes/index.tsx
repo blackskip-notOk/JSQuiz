@@ -1,11 +1,9 @@
 import type { LinksFunction, LoaderFunction, MetaFunction } from '@remix-run/node';
 import { json } from '@remix-run/node';
-import { Link } from '@remix-run/react';
-import { useTranslation } from 'react-i18next';
 
 import { Footer } from '~/components/footer';
+import { HeaderNav, links as HeaderNavLinks } from '~/components/headerNav';
 import { TranslationToggle, links as TranslationToggleLinks } from '~/components/translationToggle';
-import { Route } from '~/constants';
 import i18next from '~/i18n/i18n.server';
 
 import stylesUrl from '~/styles/index.css';
@@ -18,43 +16,25 @@ export const loader: LoaderFunction = async ({ request }) => {
 };
 
 export const links: LinksFunction = () => {
-	return [...TranslationToggleLinks(), { rel: 'stylesheet', href: stylesUrl }];
+	return [...TranslationToggleLinks(), ...HeaderNavLinks(), { rel: 'stylesheet', href: stylesUrl }];
 };
 
 export const meta: MetaFunction = ({ data }) => {
 	return { title: data.title, description: data.description };
 };
 
-export const handle = {
-	i18n: 'home',
-};
-
 export default function IndexRoute() {
-	const { t } = useTranslation('home');
-
 	return (
 		<div className='container'>
 			<header className='header'>
+				<HeaderNav />
 				<TranslationToggle />
 			</header>
-			<div className='content'>
+			<main className='content'>
 				<h1>
 					JavaScript <span>Quiz</span>
 				</h1>
-				<nav>
-					<ul>
-						<li>
-							<Link to={Route.rules}>{t('link.rules')}</Link>
-						</li>
-						<li>
-							<Link to={Route.games}>{t('link.previousGames')}</Link>
-						</li>
-						<li>
-							<Link to={Route.play}>{t('link.newGame')}</Link>
-						</li>
-					</ul>
-				</nav>
-			</div>
+			</main>
 			<Footer className='footer' />
 		</div>
 	);

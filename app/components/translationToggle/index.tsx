@@ -1,5 +1,4 @@
 import { useTranslation } from 'react-i18next';
-import { Flag } from '~/constants';
 import type { Language } from '~/i18n/types';
 import { languages } from '~/i18n/types';
 import stylesUrl from './styles.css';
@@ -18,16 +17,12 @@ export const TranslationToggle = () => {
 		return (
 			<button
 				key={lng}
-				style={{ fontWeight: isLng ? 'bold' : 'normal', color: isLng ? 'whitesmoke' : 'gray' }}
+				style={{ fontWeight: isLng ? 'bold' : 'normal', color: isLng ? 'white' : '#a9adc1' }}
 				className='toggle'
 				type='submit'
 				onClick={handleToggle}
 			>
-				<img
-					className='flag'
-					src={`https://cdn2.iconfinder.com/data/icons/world-flag-icons/128/${Flag[lng]}.png`}
-					alt='flag'
-				/>
+				<img className='flag' src={`/images/flags/${lng}.png`} alt={`flag ${lng}`} />
 				<span className='nativeName'>{languages[lng].nativeName}</span>
 			</button>
 		);
