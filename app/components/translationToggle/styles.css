@@ -1,6 +1,8 @@
 .toggleContainer {
 	display: flex;
 	flex-direction: row;
+	height: 100%;
+	align-items: center;
 }
 
 .toggle {
@@ -27,7 +29,17 @@
 	margin-right: 3px;
 }
 
+.nativeName {
+    font-family: var(--font-display);
+}
+
 .nativeName:hover {
-	color: var(--color-white);
+	color: var(--color-links-hover);
 	cursor: pointer;
+}
+
+@media print, (min-width: 640px) {
+	.nativeName {
+		font-size: 1rem;
+	}
 }

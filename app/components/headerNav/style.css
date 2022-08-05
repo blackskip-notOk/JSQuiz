@@ -1,0 +1,43 @@
+.linksList {
+	display: flex;
+	margin: 0;
+	padding: 0;
+	list-style: none;
+    font-weight: 500;
+    font-family: var(--font-display);
+}
+
+.linkItem {
+	padding-bottom: 0.5rem;
+	padding-top: 0.5rem;
+	padding-left: 1.25rem;
+	padding-right: 1.25rem;
+}
+
+.link {
+	position: relative;
+}
+
+.link::after {
+	bottom: -4px;
+	content: '';
+	display: block;
+	height: 2px;
+	left: 0;
+	position: absolute;
+	transform: scaleX(0);
+	transform-origin: left;
+	transition: transform 0.25s ease;
+	width: 100%;
+}
+
+.link:hover::after {
+	background-color: var(--color-links);
+	transform: scaleX(1);
+}
+
+@media print, (min-width: 640px) {
+	.linksList {
+		font-size: 1.25rem;
+	}
+}
