@@ -1,0 +1,30 @@
+.appContainer {
+	min-height: calc(100vh - env(safe-area-inset-bottom));
+	display: grid;
+	grid-template-rows: 80px 1fr 80px;
+	grid-template-areas:
+		'header'
+		'content'
+		'footer';
+	align-items: center;
+	justify-items: center;
+    padding: var(--gap-sm);
+}
+
+.header {
+	width: 100%;
+	grid-area: header;
+	display: grid;
+	grid-template-columns: max-content 1fr max-content;
+	column-gap: var(--gap-xl);
+	justify-content: space-between;
+	padding: 0 var(--gap-lg);
+}
+
+.content {
+	grid-area: content;
+}
+
+.footer {
+	grid-area: footer;
+}

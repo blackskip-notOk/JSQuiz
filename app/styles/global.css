@@ -44,8 +44,15 @@
 	--color-team-blue: hsl(207, 100%, 61%);
 	--color-team-red: hsl(0, 100%, 64%);
 	--color-team-yellow: hsl(50, 100%, 31%);
-	--color-yellow-500: hsl(50, 100%, 31%);
 	--color-yellow-500-inverted: hsl(47, 100%, 63%);
+	--gap-sm: 10px;
+	--gap-md: 15px;
+	--gap-lg: 20px;
+	--gap-xl: 30px;
+	--sm: 320px;
+	--md: 640px;
+	--lg: 1024px;
+	--xl: 1440px;
 }
 
 html {
@@ -74,7 +81,6 @@ body {
 	font-family: var(--font-body);
 	line-height: 1.5;
 	background-repeat: no-repeat;
-	min-height: 100vh;
 	min-height: calc(100vh - env(safe-area-inset-bottom));
 }
 
@@ -142,14 +148,6 @@ h6 {
 	clip: rect(0, 0, 0, 0);
 	white-space: nowrap;
 	border-width: 0;
-}
-
-.container {
-	--gutter: 16px;
-	width: 1024px;
-	max-width: calc(100% - var(--gutter) * 2);
-	margin-right: auto;
-	margin-left: auto;
 }
 
 /* need to check under this line */
