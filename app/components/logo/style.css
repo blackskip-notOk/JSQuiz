@@ -1,0 +1,48 @@
+.logoContainer {
+	width: 70px;
+	height: 66px;
+	display: grid;
+	align-items: center;
+	justify-content: center;
+	position: relative;
+	z-index: 0;
+	border-radius: 50%;
+	overflow: hidden;
+}
+
+.logoContainer::before {
+	position: absolute;
+	content: '';
+	left: 0%;
+	top: 0%;
+	width: 100%;
+	height: 100%;
+	z-index: -2;
+	background-color: var(--color-background);
+	background-repeat: no-repeat;
+	background-image: conic-gradient(transparent, var(--color-blue-500), transparent 30%);
+    animation: rotate 4s linear infinite;
+}
+
+.logoContainer::after {
+	content: '';
+	position: absolute;
+	z-index: -1;
+	left: 2px;
+	top: 2px;
+	width: 66px;
+	height: 62px;
+	background: var(--color-background);
+	border-radius: 50%;
+}
+
+@keyframes rotate {
+	100% {
+		transform: rotate(1turn);
+	}
+}
+
+.logo {
+	width: 50px;
+	height: 50px;
+}

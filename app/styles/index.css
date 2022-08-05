@@ -8,38 +8,6 @@ body {
   background-image: var(--gradient-background);
 }
 
-.container {
-  min-height: inherit;
-  width: 100%;
-  display: grid;
-  grid-template-rows: 80px 1fr 80px;
-  grid-template-areas:
-    'header'
-    'content'
-    'footer';
-  align-items: center;
-  justify-items: center;
-}
-
-.header {
-  width: 100%;
-  grid-area: header;
-  display: grid;
-  grid-template-columns: 1fr max-content;
-  column-gap: 30px;
-  justify-content: space-between;
-}
-
-.content {
-  grid-area: content;
-  padding-top: 3rem;
-  padding-bottom: 3rem;
-}
-
-.footer {
-  grid-area: footer;
-}
-
 h1 {
   text-shadow: 0 6px 0 var(--text-shadow);
   text-align: center;

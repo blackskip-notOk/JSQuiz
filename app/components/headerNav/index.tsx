@@ -17,13 +17,13 @@ export const HeaderNav = () => {
 		<nav>
 			<ul className="linksList">
 				<li className="linkItem">
-					<Link to={Route.rules} className="link">{t('link.rules')}</Link>
+					<Link to={Route.rules} prefetch='intent' className="link">{t('link.rules')}</Link>
 				</li>
 				<li className="linkItem">
-					<Link to={Route.games} className="link">{t('link.results')}</Link>
+					<Link to={Route.games} prefetch='intent' className="link">{t('link.results')}</Link>
 				</li>
 				<li className="linkItem">
-					<Link to={Route.play} className="link">{t('link.newGame')}</Link>
+					<Link to={Route.play} prefetch='intent' className="link">{t('link.newGame')}</Link>
 				</li>
 			</ul>
 		</nav>
