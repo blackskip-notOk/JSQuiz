@@ -1,0 +1,8 @@
+{
+    "first": "1 game - 1 host and N participants",
+    "second": "Each game host prepares questions at his discretion, these can be tasks, theoretical questions, etc.",
+    "third": "The host determines the format for asking questions.",
+    "forth": "In each game there are N circles (depending on the number of questions), in each of them the participants take turns 'selecting' a question and answering it.",
+    "fifth": "For each correct answer, the player receives 1 point. For 'half-answer' 0.5 points.",
+    "sixth": "Bonus: for clarifying questions or additions from any participant, except for the respondent, 0.1 point is required."
+}

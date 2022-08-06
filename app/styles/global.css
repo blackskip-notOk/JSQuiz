@@ -25,7 +25,7 @@
 	--color-black: hsl(0, 0%, 0%);
 	--color-white: hsl(0, 0%, 100%);
 	--color-blue-100: hsl(214, 100%, 95%);
-	--color-blue-500: hsl(215, 100%, 65%);
+	--color-blue-500: #4d97ff;
 	--color-slate-500: hsl(230, 16%, 71%);
 	--color-gray-100: hsl(0, 0%, 97%);
 	--color-gray-200: hsl(218, 19%, 92%);
