@@ -1,9 +1,5 @@
 import type { LinksFunction, LoaderFunction, MetaFunction } from '@remix-run/node';
 import { json } from '@remix-run/node';
-
-import { links as HeaderNavLinks } from '~/components/headerNav';
-import { links as TranslationToggleLinks } from '~/components/translationToggle';
-import { links as LogoLinks } from '~/components/logo';
 import i18next from '~/i18n/i18n.server';
 import { useTranslation } from 'react-i18next';
 import stylesUrl from '~/styles/rules.css';
@@ -16,12 +12,7 @@ export const loader: LoaderFunction = async ({ request }) => {
 };
 
 export const links: LinksFunction = () => {
-	return [
-		...TranslationToggleLinks(),
-		...HeaderNavLinks(),
-		...LogoLinks(),
-		{ rel: 'stylesheet', href: stylesUrl },
-	];
+	return [{ rel: 'stylesheet', href: stylesUrl }];
 };
 
 export const meta: MetaFunction = ({ data }) => {
@@ -37,7 +28,7 @@ export default function RulesRoute() {
 
 	return (
 		<div className='rulesContainer'>
-			<h1>Rules</h1>
+			<h1>{t('header')}</h1>
 			<ul>
 				<li>{t('first')}</li>
 				<li>{t('second')}</li>

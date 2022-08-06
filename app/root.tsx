@@ -20,6 +20,9 @@ import { useTranslation } from 'react-i18next';
 import i18next from '~/i18n/i18n.server';
 import { Footer } from './components/footer';
 import { Header } from './components/header';
+import { links as HeaderNavLinks } from '~/components/headerNav';
+import { links as TranslationToggleLinks } from '~/components/translationToggle';
+import { links as LogoLinks } from '~/components/logo';
 
 type LoaderData = { locale: string };
 
@@ -42,6 +45,9 @@ export const links: LinksFunction = () => {
 			rel: 'stylesheet',
 			href: rootStyleUrl,
 		},
+		...HeaderNavLinks(),
+		...TranslationToggleLinks(),
+		...LogoLinks(),
 		{
 			rel: 'stylesheet',
 			href: globalMediumStylesUrl,

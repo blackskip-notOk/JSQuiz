@@ -1,8 +1,5 @@
 import type { LinksFunction, LoaderFunction, MetaFunction } from '@remix-run/node';
 import { json } from '@remix-run/node';
-import { links as HeaderNavLinks } from '~/components/headerNav';
-import { links as TranslationToggleLinks } from '~/components/translationToggle';
-import { links as LogoLinks } from '~/components/logo';
 import i18next from '~/i18n/i18n.server';
 
 import stylesUrl from '~/styles/index.css';
@@ -15,12 +12,7 @@ export const loader: LoaderFunction = async ({ request }) => {
 };
 
 export const links: LinksFunction = () => {
-	return [
-		...TranslationToggleLinks(),
-		...HeaderNavLinks(),
-		...LogoLinks(),
-		{ rel: 'stylesheet', href: stylesUrl },
-	];
+	return [{ rel: 'stylesheet', href: stylesUrl }];
 };
 
 export const meta: MetaFunction = ({ data }) => {

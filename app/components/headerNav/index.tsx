@@ -23,7 +23,7 @@ export const HeaderNav = () => {
 					<Link to={Route.games} prefetch='intent' className="link">{t('link.results')}</Link>
 				</li>
 				<li className="linkItem">
-					<Link to={Route.play} prefetch='intent' className="link">{t('link.newGame')}</Link>
+					<Link to={Route.game} prefetch='intent' className="link">{t('link.newGame')}</Link>
 				</li>
 			</ul>
 		</nav>
