@@ -1,8 +1,10 @@
 {
     "header": {
-        "default": "Welcome to JS Quiz!"
+        "default": "Welcome to JS Quiz!",
+        "rules": "JS Quiz | Rules"
     },
     "description": {
-        "headerDefault": "App to play in JS-Quiz with Remix framework!"
+        "headerDefault": "App to play in JS-Quiz with Remix framework!",
+        "headerRules": "The rules of the game JS-Quiz"
     }
 }

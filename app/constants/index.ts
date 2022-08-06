@@ -17,6 +17,7 @@ export const TimesofDay = {
 } as const;
 
 export const Route = {
+	home: '.',
 	rules: 'rules',
 	games: 'games',
 	play: 'play',

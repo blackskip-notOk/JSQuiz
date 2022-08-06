@@ -1,0 +1,31 @@
+.rulesContainer {
+    display: grid;
+    justify-items: center;
+}
+
+h1 {
+    margin-top: calc(var(--gap-xl) * 2);
+    margin-bottom: calc(var(--gap-xl) * 1.5);
+}
+
+ul {
+    max-width: 80%;
+    margin: 0;
+    list-style-image: url('/images/other/check.svg')
+}
+
+li {
+    font-size: 1.1rem;
+}
+
+@media print, (min-width: 640px) {
+	li {
+		font-size: 1.25rem;
+	}
+}
+
+@media print, (min-width: 1024px) {
+	li {
+		font-size: 1.5rem;
+	}
+}

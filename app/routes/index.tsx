@@ -15,7 +15,12 @@ export const loader: LoaderFunction = async ({ request }) => {
 };
 
 export const links: LinksFunction = () => {
-	return [...TranslationToggleLinks(), ...HeaderNavLinks(), ...LogoLinks(), { rel: 'stylesheet', href: stylesUrl }];
+	return [
+		...TranslationToggleLinks(),
+		...HeaderNavLinks(),
+		...LogoLinks(),
+		{ rel: 'stylesheet', href: stylesUrl },
+	];
 };
 
 export const meta: MetaFunction = ({ data }) => {
