@@ -20,5 +20,6 @@ export const Route = {
 	home: '.',
 	rules: 'rules',
 	games: 'games',
+	game: 'game',
 	play: 'play',
 } as const;
