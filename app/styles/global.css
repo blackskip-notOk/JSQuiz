@@ -40,7 +40,7 @@
 	--color-green-500: hsl(138, 61%, 49%);
 	--color-green-600: hsl(107, 65%, 57%);
 	--color-red-500: hsl(0, 100%, 64%);
-	--color-yellow-500: hsl(47, 100%, 63%);
+	--color-yellow-500: #ffd642;
 	--color-team-blue: hsl(207, 100%, 61%);
 	--color-team-red: hsl(0, 100%, 64%);
 	--color-team-yellow: hsl(50, 100%, 31%);
@@ -53,6 +53,10 @@
 	--md: 640px;
 	--lg: 1024px;
 	--xl: 1440px;
+	--font-size-sm: 12px;
+	--font-size-md: 16px;
+	--font-size-lg: 24px;
+	--font-size-xl: 36px;
 }
 
 html {

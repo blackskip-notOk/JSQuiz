@@ -23,6 +23,7 @@ import { Header } from './components/header';
 import { links as HeaderNavLinks } from '~/components/headerNav';
 import { links as TranslationToggleLinks } from '~/components/translationToggle';
 import { links as LogoLinks } from '~/components/logo';
+import { links as LoginLinks } from '~/components/login';
 
 type LoaderData = { locale: string };
 
@@ -45,9 +46,10 @@ export const links: LinksFunction = () => {
 			rel: 'stylesheet',
 			href: rootStyleUrl,
 		},
+		...LogoLinks(),
 		...HeaderNavLinks(),
 		...TranslationToggleLinks(),
-		...LogoLinks(),
+		...LoginLinks(),
 		{
 			rel: 'stylesheet',
 			href: globalMediumStylesUrl,

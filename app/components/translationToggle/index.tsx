@@ -17,7 +17,7 @@ export const TranslationToggle = () => {
 		return (
 			<button
 				key={lng}
-				style={{ fontWeight: isLng ? 'bold' : 'normal', color: isLng ? 'white' : '#a9adc1' }}
+				style={{ fontWeight: isLng ? '500' : '300' }}
 				className='toggle'
 				type='submit'
 				onClick={handleToggle}

@@ -25,12 +25,14 @@
 }
 
 .flag {
-	width: 20px;
+	width: var(--font-size-lg);
 	margin-right: 3px;
 }
 
 .nativeName {
-    font-family: var(--font-display);
+	font-family: var(--font-display);
+	font-size: var(--font-size-lg);
+	color: var(--color-links);
 }
 
 .nativeName:hover {
@@ -38,8 +40,12 @@
 	cursor: pointer;
 }
 
-@media print, (min-width: 640px) {
+@media screen and (max-width: 1024px) {
 	.nativeName {
-		font-size: 1rem;
+		font-size: var(--font-size-md);
+	}
+
+	.flag {
+		width: var(--font-size-md);
 	}
 }

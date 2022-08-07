@@ -2,8 +2,10 @@ import type { Game } from '@prisma/client';
 import type { LinksFunction, LoaderFunction } from '@remix-run/node';
 import { json } from '@remix-run/node';
 import { Outlet, Link, useLoaderData } from '@remix-run/react';
+import { useTranslation } from 'react-i18next';
+import { Route } from '~/constants';
 
-import stylesUrl from '~/styles/games.css';
+import stylesUrl from '~/styles/game.css';
 import { db } from '~/utils/db.server';
 import { getUser } from '~/utils/session.server';
 
@@ -31,7 +33,12 @@ export const loader: LoaderFunction = async ({ request }) => {
 	return json(data);
 };
 
+export const handle = {
+	i18n: 'game',
+};
+
 export default function GameRoute() {
+	const { t } = useTranslation('game');
 	const data = useLoaderData<LoaderData>();
 
 	const game = data.gameListItems.map((item) => (
@@ -42,28 +49,21 @@ export default function GameRoute() {
 		</li>
 	));
 
+	const isGames = !!game.length;
+
 	return (
 		<div className='games-layout'>
-			{/* <header className='games-header'>
+			<header className='games-header'>
 				<div className='container'>
 					<h1 className='home-link'>
-						<Link to='/' title='Remix games' aria-label='Remix games'>
-							<span className='logo'>🤪</span>
-							<span className='logo-medium'>J🤪KES</span>
-						</Link>
+						{isGames ? (
+							t('headerGames')
+						) : (
+							<Link to={Route.new} title={t('headerNewGame')} aria-label='Create a new game'>
+								{t('headerNoGames')}
+							</Link>
+						)}
 					</h1>
-					{data.user ? (
-						<div className='user-info'>
-							<span>{`Hi ${data.user.username}`}</span>
-							<form action='/logout' method='post'>
-								<button type='submit' className='button'>
-									Logout
-								</button>
-							</form>
-						</div>
-					) : (
-						<Link to='/login'>Login</Link>
-					)}
 				</div>
 			</header>
 			<main className='games-main'>
@@ -80,7 +80,7 @@ export default function GameRoute() {
 						<Outlet />
 					</div>
 				</div>
-			</main> */}
+			</main>
 		</div>
 	);
 }
