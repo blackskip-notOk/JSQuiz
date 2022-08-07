@@ -1,0 +1,18 @@
+.login {
+	margin-top: var(--gap-sm);
+	width: var(--font-size-xl);
+}
+
+.user-info {
+	display: flex;
+	gap: 1rem;
+	align-items: center;
+	white-space: nowrap;
+}
+
+@media screen and (max-width: 1024px) {
+	.login {
+		margin-top: var(--gap-sm);
+	width: var(--font-size-lg);
+	}
+}

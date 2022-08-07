@@ -15,7 +15,7 @@
 	width: 100%;
 	grid-area: header;
 	display: grid;
-	grid-template-columns: max-content 1fr max-content;
+	grid-template-columns: max-content 1fr max-content max-content;
 	column-gap: var(--gap-xl);
 	justify-content: space-between;
 	align-items: center;

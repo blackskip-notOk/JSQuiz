@@ -1,5 +1,6 @@
 import type { FC } from 'react';
 import { HeaderNav } from '../headerNav';
+import { Login } from '../login';
 import { Logo } from '../logo';
 import { TranslationToggle } from '../translationToggle';
 
@@ -13,6 +14,7 @@ export const Header: FC<HeaderProps> = ({ className }) => {
             <Logo />
 			<HeaderNav />
 			<TranslationToggle />
+			<Login />
 		</header>
 	);
 };
