@@ -17,7 +17,7 @@ export const TimesofDay = {
 } as const;
 
 export const Route = {
-	home: '.',
+	home: '/',
 	login: 'login',
 	logout: 'logout',
 	rules: 'rules',
@@ -25,4 +25,5 @@ export const Route = {
 	game: 'game',
 	new: 'new',
 	play: 'play',
+	remix: 'https://remix.run'
 } as const;

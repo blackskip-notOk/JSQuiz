@@ -1,3 +1,17 @@
 {
-    "greeting": "Привет {{username}}"
+    "greeting": "Привет {{username}}",
+    "login": "Логин",
+    "register": "Регистрация",
+    "loginType": "Залогиниться или зарегестрироваться?",
+    "username": "Имя пользователя",
+    "usernamePlaceholder": "Введи своё имя",
+    "password": "Пароль",
+    "passwordPlaceholder": "Введи свой пароль",
+    "role": "Роль",
+    "selectRole": "Выбери роль",
+    "admin": "Админ",
+    "player": "Игрок",
+    "submit": "Отправить",
+    "home": "Домой",
+    "game": "К игре"
 }
