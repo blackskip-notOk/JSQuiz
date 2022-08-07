@@ -37,6 +37,22 @@
 	transform: scaleX(1);
 }
 
+.activeLink {
+	position: relative;
+	color: var(--color-links-hover);
+}
+
+.activeLink::after {
+	bottom: -4px;
+	content: '';
+	display: block;
+	height: 2px;
+	left: 0;
+	position: absolute;
+	width: 100%;
+	background-color: var(--color-links-hover);
+}
+
 @media screen and (max-width: 1024px) {
 	.linksList {
 		font-size: var(--font-size-md);

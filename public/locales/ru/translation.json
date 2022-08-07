@@ -1,10 +1,12 @@
 {
     "header": {
         "default": "Добро пожаловать в JS Quiz!",
-        "rules": "JS Quiz | Правила"
+        "rules": "JS Quiz | Правила",
+        "login": "JS Quiz | Логин"
     },
     "description": {
         "headerDefault": "Приложение для игры в JS-Quiz, на фрейморке Remix!",
-        "headerRules": "Правила игры в JS-Quiz"
+        "headerRules": "Правила игры в JS-Quiz",
+        "headerLogin": "Залогинься чтобы принять участие или создать свою игру!"
     }
 }

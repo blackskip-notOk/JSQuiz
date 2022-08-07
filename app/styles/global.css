@@ -19,13 +19,18 @@
 		var(--color-gray-800) 40%,
 		var(--color-gray-900) 100%
 	);
+	--color-border: var(--color-gray-500);
+	--color-border-hover: var(--color-gray-600);
+	--input-background: var(--color-gray-800);
+	--input-background-hover: var(--color-gray-900);
 	--text-shadow: var(--color-black);
 	--color-links: hsl(230, 16%, 71%);
 	--color-links-hover: var(--color-white);
 	--color-black: hsl(0, 0%, 0%);
 	--color-white: hsl(0, 0%, 100%);
 	--color-blue-100: hsl(214, 100%, 95%);
-	--color-blue-500: #4d97ff;
+	--color-blue-500: hsl(215, 100%, 65%);
+	--color-blue-800: hsl(216, 95%, 47%);
 	--color-slate-500: hsl(230, 16%, 71%);
 	--color-gray-100: hsl(0, 0%, 97%);
 	--color-gray-200: hsl(218, 19%, 92%);
@@ -40,23 +45,19 @@
 	--color-green-500: hsl(138, 61%, 49%);
 	--color-green-600: hsl(107, 65%, 57%);
 	--color-red-500: hsl(0, 100%, 64%);
-	--color-yellow-500: #ffd642;
-	--color-team-blue: hsl(207, 100%, 61%);
-	--color-team-red: hsl(0, 100%, 64%);
-	--color-team-yellow: hsl(50, 100%, 31%);
-	--color-yellow-500-inverted: hsl(47, 100%, 63%);
+	--color-yellow-300: hsl(47, 97%, 76%);
+	--color-yellow-500: hsl(47, 100%, 63%);
+	--color-yellow-800: hsl(50, 100%, 50%);
 	--gap-sm: 10px;
 	--gap-md: 15px;
 	--gap-lg: 20px;
 	--gap-xl: 30px;
-	--sm: 320px;
-	--md: 640px;
-	--lg: 1024px;
-	--xl: 1440px;
 	--font-size-sm: 12px;
 	--font-size-md: 16px;
 	--font-size-lg: 24px;
 	--font-size-xl: 36px;
+	--border-radius-sm: 5px;
+	--border-radius-md: 10px;
 }
 
 html {
@@ -154,50 +155,35 @@ h6 {
 	border-width: 0;
 }
 
-/* need to check under this line */
-
 /* buttons */
 
 .button {
-	--shadow-color: hsl(var(--hs-links) 30%);
-	--shadow-size: 3px;
 	-webkit-appearance: none;
 	-moz-appearance: none;
 	cursor: pointer;
 	appearance: none;
-	display: inline-flex;
-	align-items: center;
-	justify-content: center;
-	background-color: var(--color-links);
-	color: var(--color-background);
+	border: 2px solid var(--color-blue-800);
+	border-radius: var(--border-radius-sm);
+	background-color: var(--color-blue-500);
+	color: var(--color-yellow-800);
 	font-family: var(--font-display);
-	font-weight: bold;
+	font-weight: 500;
 	line-height: 1;
-	font-size: 1.125rem;
-	margin: 0;
+	font-size: calc(var(--font-size-md) * 1.2);
 	padding: 0.625em 1em;
-	border: 0;
-	border-radius: 4px;
-	box-shadow: 0 var(--shadow-size) 0 0 var(--shadow-color);
-	outline-offset: 2px;
-	transform: translateY(0);
-	transition: background-color 50ms ease-out, box-shadow 50ms ease-out,
-		transform 100ms cubic-bezier(0.3, 0.6, 0.8, 1.25);
+	transition: background-color 300ms ease-out,
+		transform 300ms cubic-bezier(0.3, 0.6, 0.8, 1.25);
 }
 
 .button:hover {
-	--raise: 1px;
-	color: var(--color-background);
-	text-decoration: none;
-	box-shadow: 0 calc(var(--shadow-size) + var(--raise)) 0 0 var(--shadow-color);
-	transform: translateY(calc(var(--raise) * -1));
+	color: var(--color-yellow-300);
+	transform: translateY(-1px);
 }
 
 .button:active {
-	--press: 1px;
-	box-shadow: 0 calc(var(--shadow-size) - var(--press)) 0 0 var(--shadow-color);
-	transform: translateY(var(--press));
-	background-color: var(--color-links-hover);
+	transform: translateY(1px);
+	background-color: var(--color-blue-800);
+	border: 2px solid var(--color-blue-500);
 }
 
 .button[disabled],
@@ -236,78 +222,54 @@ legend {
 
 [type='text'],
 [type='password'],
-[type='date'],
-[type='datetime'],
-[type='datetime-local'],
-[type='month'],
-[type='week'],
-[type='email'],
-[type='number'],
-[type='search'],
-[type='tel'],
-[type='time'],
-[type='url'],
-[type='color'],
 textarea {
 	-webkit-appearance: none;
 	-moz-appearance: none;
 	appearance: none;
-	display: block;
-	display: flex;
-	align-items: center;
 	width: 100%;
-	height: 2.5rem;
-	margin: 0;
 	padding: 0.5rem 0.75rem;
 	border: 1px solid var(--color-border);
-	border-radius: 4px;
-	background-color: hsl(0 0% 100% / 10%);
-	background-blend-mode: luminosity;
-	box-shadow: none;
+	border-radius: var(--border-radius-sm);
+	background-color: var(--input-background);
 	font-family: var(--font-body);
 	font-size: 1rem;
 	font-weight: normal;
 	line-height: 1.5;
 	color: var(--color-foreground);
-	transition: box-shadow 200ms, border-color 50ms ease-out, background-color 50ms ease-out,
-		color 50ms ease-out;
+	outline: none;
 }
 
-[data-light] [type='text'],
-[data-light] [type='password'],
-[data-light] [type='date'],
-[data-light] [type='datetime'],
-[data-light] [type='datetime-local'],
-[data-light] [type='month'],
-[data-light] [type='week'],
-[data-light] [type='email'],
-[data-light] [type='number'],
-[data-light] [type='search'],
-[data-light] [type='tel'],
-[data-light] [type='time'],
-[data-light] [type='url'],
-[data-light] [type='color'],
-[data-light] textarea {
-	color: var(--color-background);
-	background-color: hsl(0 0% 0% / 10%);
+[type='text']:hover,
+[type='password']:hover,
+textarea:hover {
+	border: 1px solid var(--color-border-hover);
+	background-color: var(--input-background-hover);
+}
+
+[type='text']:focus,
+[type='password']:focus,
+textarea:focus {
+	border: 1px solid var(--color-border-hover);
+	background-color: var(--input-background-hover);
 }
 
 [type='text'][aria-invalid='true'],
 [type='password'][aria-invalid='true'],
-[type='date'][aria-invalid='true'],
-[type='datetime'][aria-invalid='true'],
-[type='datetime-local'][aria-invalid='true'],
-[type='month'][aria-invalid='true'],
-[type='week'][aria-invalid='true'],
-[type='email'][aria-invalid='true'],
-[type='number'][aria-invalid='true'],
-[type='search'][aria-invalid='true'],
-[type='tel'][aria-invalid='true'],
-[type='time'][aria-invalid='true'],
-[type='url'][aria-invalid='true'],
-[type='color'][aria-invalid='true'],
 textarea[aria-invalid='true'] {
-	border-color: var(--color-invalid);
+	border-color: var(--color-red-500);
+}
+
+[type='text']:-webkit-autofill,
+[type='text']:-webkit-autofill:hover,
+[type='text']:-webkit-autofill:focus,
+[type='text']:-webkit-autofill:active {
+	-webkit-box-shadow: inset 0 0 0 30px var(--input-background-hover) !important;
+	box-shadow: inset 0 0 0 30px var(--input-background-hover) !important;
+	-webkit-text-fill-color: var(--color-foreground) !important;
+}
+
+[type='radio'] {
+	cursor: pointer;
 }
 
 textarea {
@@ -328,32 +290,8 @@ textarea[readonly] {
 	cursor: not-allowed;
 }
 
-[type='file'],
-[type='checkbox'],
-[type='radio'] {
-	margin: 0;
-}
-
-[type='file'] {
-	width: 100%;
-}
-
-label {
-	margin: 0;
-}
-
-[type='checkbox'] + label,
-[type='radio'] + label {
-	margin-left: 0.5rem;
-}
-
-label > [type='checkbox'],
-label > [type='radio'] {
-	margin-right: 0.5rem;
-}
-
 ::placeholder {
-	color: hsl(0 0% 100% / 65%);
+	color: var(--color-gray-400);
 }
 
 .form-validation-error {

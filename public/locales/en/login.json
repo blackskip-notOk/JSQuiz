@@ -1,3 +1,17 @@
 {
-    "greeting": "Hi {{username}}"
+    "greeting": "Hi {{username}}",
+    "login": "Login",
+    "register": "Register",
+    "loginType": "Login or Register?",
+    "username": "Username",
+    "usernamePlaceholder": "Enter your username",
+    "password": "Password",
+    "passwordPlaceholder": "Enter your password",
+    "role": "Role",
+    "selectRole": "Select a role",
+    "admin": "Admin",
+    "player": "Player",
+    "submit": "Submit",
+    "home": "Home",
+    "game": "Game"
 }

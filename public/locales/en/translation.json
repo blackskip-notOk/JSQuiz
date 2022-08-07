@@ -1,10 +1,12 @@
 {
     "header": {
         "default": "Welcome to JS Quiz!",
-        "rules": "JS Quiz | Rules"
+        "rules": "JS Quiz | Rules",
+        "login": "JS Quiz | Login"
     },
     "description": {
         "headerDefault": "App to play in JS-Quiz with Remix framework!",
-        "headerRules": "The rules of the game JS-Quiz"
+        "headerRules": "The rules of the game JS-Quiz",
+        "headerLogin": "Login to take a part or create your game!"
     }
 }
