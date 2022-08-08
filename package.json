@@ -8,9 +8,6 @@
   "license": "MIT",
   "private": true,
   "sideEffects": false,
-  "prisma": {
-    "seed": "node --require esbuild-register prisma/seed.ts"
-  },
   "scripts": {
     "build": "remix build",
     "dev": "remix dev",
