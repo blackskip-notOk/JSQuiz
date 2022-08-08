@@ -1,8 +1,8 @@
-import { LoginType } from "~/constants";
+import { LoginTypes } from '~/constants';
 
 export const getLogintype = (value: FormDataEntryValue | null) => {
 	if (!value || typeof value !== 'string') {
 		return null;
 	}
-	return value === LoginType.login ? LoginType.login : LoginType.register;
+	return value === LoginTypes.login ? LoginTypes.login : LoginTypes.register;
 };

@@ -1,7 +1,7 @@
 import { db } from '~/utils/db.server';
-import { redirect } from "@remix-run/node";
-import { Route } from "~/constants";
-import { getUserSession } from "./session.server";
+import { redirect } from '@remix-run/node';
+import { Route } from '~/constants';
+import { getUserSession } from './session.server';
 import { logout } from './login';
 
 export async function getUserId(request: Request) {
@@ -12,7 +12,7 @@ export async function getUserId(request: Request) {
 		return null;
 	}
 	return userId;
-};
+}
 
 export async function requireUserId(
 	request: Request,
@@ -44,4 +44,4 @@ export async function getUser(request: Request) {
 	} catch {
 		throw logout(request);
 	}
-};
+}

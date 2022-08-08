@@ -23,7 +23,9 @@ export const Route = {
 	remix: 'https://remix.run',
 } as const;
 
-export const LoginType = {
-    login: 'login',
-    register: 'register'
+export const LoginTypes = {
+	login: 'login',
+	register: 'register',
 } as const;
+
+export type LoginType = keyof typeof LoginTypes;

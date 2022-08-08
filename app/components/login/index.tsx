@@ -3,7 +3,7 @@ import { json } from '@remix-run/node';
 import { Link, useLoaderData } from '@remix-run/react';
 import { useTranslation } from 'react-i18next';
 import { Route } from '~/constants';
-import { getUser } from '~/utils/session.server';
+import { getUser } from '~/utils/getUser';
 import stylesUrl from './style.css';
 
 export const links: LinksFunction = () => {

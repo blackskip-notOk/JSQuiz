@@ -1,13 +1,15 @@
-import { Role } from "@prisma/client";
-import { json } from "@remix-run/node";
-import { Route } from "~/constants";
-import type { LoginActionData } from "~/types";
+import { LoginTypes } from './../constants/index';
+import type { LoginType } from '~/constants';
+import { Role } from '@prisma/client';
+import { json } from '@remix-run/node';
+import { Route } from '~/constants';
+import type { LoginActionData } from '~/types';
 
 export const badRequest = (data: LoginActionData) => json(data, { status: 400 });
 
 export function validateUsername(username: unknown, message: string) {
 	if (typeof username !== 'string' || username.length < 3) {
-        return message;
+		return message;
 	}
 };
 
@@ -17,8 +19,8 @@ export function validatePassword(password: unknown, message: string) {
 	}
 };
 
-export function validateRole(role: unknown, message: string) {
-	if (typeof role !== 'string' || !(role in Role)) {
+export function validateRole(role: unknown, loginType: LoginType, message: string) {
+	if ((typeof role !== 'string' || !(role in Role )) && loginType === LoginTypes.register) {
 		return message;
 	}
 };

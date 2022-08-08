@@ -1,4 +1,4 @@
-import { Role } from "@prisma/client";
+import { Role } from '@prisma/client';
 
 export const getRole = (value: FormDataEntryValue | null) => {
 	if (!value || typeof value !== 'string') {
