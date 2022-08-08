@@ -7,7 +7,7 @@ import { Route } from '~/constants';
 
 import stylesUrl from '~/styles/game.css';
 import { db } from '~/utils/db.server';
-import { getUser } from '~/utils/session.server';
+import { getUser } from '~/utils/getUser';
 
 export const links: LinksFunction = () => {
 	return [{ rel: 'stylesheet', href: stylesUrl }];

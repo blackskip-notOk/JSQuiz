@@ -4,7 +4,7 @@ import { redirect } from "@remix-run/node";
 import { Form, Link, useActionData, useCatch, useTransition } from "@remix-run/react";
 import { GameDisplay } from "~/components/game";
 import { db } from "~/utils/db.server";
-import { getUserId, requireUserId } from "~/utils/session.server";
+import { getUserId, requireUserId } from "~/utils/getUser";
 
 export const loader: LoaderFunction = async ({
   request,

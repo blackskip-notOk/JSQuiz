@@ -49,6 +49,8 @@ export const action: ActionFunction = async ({ request }) => {
 	const role = getRole(form.get('role'));
 	const redirectTo = validateUrl(form.get('redirectTo') || Route.home);
 
+	console.log(role, loginType)
+
 	if (
 		typeof loginType !== 'string' ||
 		typeof username !== 'string' ||
@@ -64,10 +66,12 @@ export const action: ActionFunction = async ({ request }) => {
 	const fieldErrors = {
 		username: validateUsername(username, t('errors.nameLength')),
 		password: validatePassword(password, t('errors.passwordLength')),
-		role: validateRole(role, t('errors.role')),
+		role: validateRole(role, loginType, t('errors.role')),
 	};
 
-	if (Object.values(fieldErrors).some(Boolean)) return badRequest({ fieldErrors, fields });
+	if (Object.values(fieldErrors).some(Boolean)) {
+		return badRequest({ fieldErrors, fields });
+	}
 
 	const loginTypes = {
 		login: async () => {
@@ -107,7 +111,7 @@ export const action: ActionFunction = async ({ request }) => {
 				fields,
 				formError: t('errors.wrongLoginType'),
 			});
-		}
+		},
 	};
 
 	return loginTypes[loginType]() || loginTypes.default;

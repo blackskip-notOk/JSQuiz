@@ -9,7 +9,7 @@ import { json } from "@remix-run/node";
 import { Link, useCatch, useLoaderData, useParams } from "@remix-run/react";
 import { GameDisplay } from "~/components/game";
 import { db } from "~/utils/db.server";
-import { getUserId, requireUserId } from "~/utils/session.server";
+import { getUserId, requireUserId } from "~/utils/getUser";
 
 export const meta: MetaFunction = ({
   data,

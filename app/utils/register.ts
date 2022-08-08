@@ -1,4 +1,4 @@
-import type { LoginForm } from "~/types";
+import type { LoginForm } from '~/types';
 import { hash } from 'bcryptjs';
 import { db } from '~/utils/db.server';
 
@@ -8,4 +8,4 @@ export async function register({ username, password, role }: LoginForm) {
 		data: { username, passwordHash, role },
 	});
 	return { id: user.id, username };
-};
+}

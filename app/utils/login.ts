@@ -1,5 +1,5 @@
 import { db } from '~/utils/db.server';
-import type { LoginForm } from "~/types";
+import type { LoginForm } from '~/types';
 import { compare } from 'bcryptjs';
 import { getUserSession, storage } from './session.server';
 import { redirect } from '@remix-run/node';
@@ -17,7 +17,7 @@ export async function login({ username, password }: LoginForm) {
 	const isCorrectPassword = await compare(password, user.passwordHash);
 
 	return isCorrectPassword ? { id: user.id, username } : null;
-};
+}
 
 export async function logout(request: Request) {
 	const session = await getUserSession(request);
@@ -27,4 +27,4 @@ export async function logout(request: Request) {
 			'Set-Cookie': await storage.destroySession(session),
 		},
 	});
-};
+}
