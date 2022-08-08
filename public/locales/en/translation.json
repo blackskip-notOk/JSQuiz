@@ -8,5 +8,15 @@
         "headerDefault": "App to play in JS-Quiz with Remix framework!",
         "headerRules": "The rules of the game JS-Quiz",
         "headerLogin": "Login to take a part or create your game!"
+    },
+    "errors": {
+        "formSubmit": "Form not submitted correctly",
+        "nameLength": "Usernames must be at least 3 characters long",
+        "passwordLength": "Passwords must be at least 6 characters long",
+        "role": "Role should be admin or player",
+        "wrongLogin": "Username/Password combination is incorrect",
+        "userExist": "User with username {{username}} already exists",
+        "failRegister": "Something went wrong trying to create a new user",
+        "wrongLoginType": "Login type invalid"
     }
 }

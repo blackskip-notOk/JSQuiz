@@ -1,14 +1,9 @@
-export enum Role {
-	admin = 'ADMIN',
-	player = 'PLAYER',
-}
-
-export enum Theme {
-	html = 'HTML',
-	css = 'CSS',
-	javascript = 'JAVASCRIPT',
-	other = 'OTHER',
-}
+export const Theme = {
+	html: 'HTML',
+	css: 'CSS',
+	javascript: 'JAVASCRIPT',
+	other: 'OTHER',
+} as const;
 
 export const TimesofDay = {
 	morning: 'morning',
@@ -25,5 +20,10 @@ export const Route = {
 	game: 'game',
 	new: 'new',
 	play: 'play',
-	remix: 'https://remix.run'
+	remix: 'https://remix.run',
+} as const;
+
+export const LoginType = {
+    login: 'login',
+    register: 'register'
 } as const;
