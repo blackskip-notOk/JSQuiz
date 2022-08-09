@@ -5,7 +5,7 @@ export const Theme = {
 	other: 'OTHER',
 } as const;
 
-export const TimesofDay = {
+export const TimesOfDay = {
 	morning: 'morning',
 	afternoon: 'afternoon',
 	evening: 'evening',

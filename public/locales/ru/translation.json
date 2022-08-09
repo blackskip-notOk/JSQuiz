@@ -5,6 +5,7 @@
         "login": "JS Quiz | Логин"
     },
     "description": {
+        "root": "Учи JavaScript и хорошо проводи время!",
         "headerDefault": "Приложение для игры в JS-Quiz, на фрейморке Remix!",
         "headerRules": "Правила игры в JS-Quiz",
         "headerLogin": "Залогинься чтобы принять участие или создать свою игру!"
