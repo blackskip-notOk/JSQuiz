@@ -8,7 +8,7 @@ import type { HeaderProps } from './types';
 export const Header: FC<HeaderProps> = ({ className, user }) => {
 	return (
 		<header className={className}>
-            <Logo />
+			<Logo />
 			<HeaderNav />
 			<TranslationToggle />
 			<Login user={user} />

@@ -5,6 +5,7 @@
         "login": "JS Quiz | Login"
     },
     "description": {
+        "root": "Learn JavaScript and made a good conversation at the same time!",
         "headerDefault": "App to play in JS-Quiz with Remix framework!",
         "headerRules": "The rules of the game JS-Quiz",
         "headerLogin": "Login to take a part or create your game!"

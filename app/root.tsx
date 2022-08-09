@@ -28,9 +28,11 @@ import type { RootLoaderData } from './types';
 import { getUser } from './utils/getUser';
 
 export const loader: LoaderFunction = async ({ request }) => {
-	const locale = await i18next.getLocale(request);
 	const user = await getUser(request);
-	return json<RootLoaderData>({ locale, user });
+	const locale = await i18next.getLocale(request);
+	const t = await i18next.getFixedT(request);
+	const description = t('description.root');
+	return json<RootLoaderData>({ user, locale, description });
 };
 
 export const handle = {
@@ -64,16 +66,14 @@ export const links: LinksFunction = () => {
 	];
 };
 
-export const meta: MetaFunction = () => {
-	const description = `Learn JavaScript and made a good conversation at the same time!`;
+export const meta: MetaFunction = ({ data }) => {
 	return {
 		charset: 'utf-8',
-		description,
+		description: data.description,
 		keywords: 'HTML, CSS, JavaScript',
 		'twitter:creator': '@GmIlbabanov',
-		'twitter:site': '@GmIlbabanov',
 		'twitter:title': 'JS Quiz',
-		'twitter:description': description,
+		'twitter:description': data.description,
 	};
 };
 
