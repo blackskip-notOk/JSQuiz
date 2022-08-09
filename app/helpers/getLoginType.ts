@@ -5,4 +5,4 @@ export function getLogintype(value: FormDataEntryValue | null) {
 		return null;
 	}
 	return value === LoginTypes.login ? LoginTypes.login : LoginTypes.register;
-};
+}

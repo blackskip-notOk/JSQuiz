@@ -12,4 +12,4 @@ export function getGreetingTime(d = DateTime.now()) {
 		return TimesOfDay.evening;
 	}
 	return TimesOfDay.morning;
-};
+}

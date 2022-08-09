@@ -5,4 +5,4 @@ export function getRole(value: FormDataEntryValue | null) {
 		return null;
 	}
 	return value === Role.ADMIN ? Role.ADMIN : Role.PLAYER;
-};
+}

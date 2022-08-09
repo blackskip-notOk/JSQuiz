@@ -5,7 +5,7 @@
 	list-style: none;
 	font-weight: 500;
 	font-family: var(--font-display);
-	font-size: var(--font-size-lg);
+	font-size: var(--font-size-md);
 }
 
 .linkItem {
@@ -51,10 +51,4 @@
 	position: absolute;
 	width: 100%;
 	background-color: var(--color-links-hover);
-}
-
-@media screen and (max-width: 1024px) {
-	.linksList {
-		font-size: var(--font-size-md);
-	}
 }
