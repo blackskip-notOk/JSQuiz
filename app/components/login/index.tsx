@@ -21,7 +21,7 @@ export const Login: FC<LoginProps> = ({ user }) => {
 		<div className='user-info'>
 			<span>{t('greeting', { username: user.username })}</span>
 			<form action={Route.logout} method='post'>
-				<button type='submit' className='button'>
+				<button type='submit' className='logoutButton'>
 					<img src='/images/login/logout.svg' alt='logout icon' className='login' />
 				</button>
 			</form>

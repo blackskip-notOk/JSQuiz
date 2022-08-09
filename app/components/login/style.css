@@ -1,18 +1,18 @@
 .login {
-	margin-top: var(--gap-sm);
+	margin-top: calc(var(--gap-sm) - 5px);
 	width: var(--font-size-xl);
 }
 
 .user-info {
 	display: flex;
-	gap: 1rem;
 	align-items: center;
 	white-space: nowrap;
+	font-size: var(--font-size-md);
+	font-weight: 500;
+	color: var(--color-blue-500);
 }
 
-@media screen and (max-width: 1024px) {
-	.login {
-		margin-top: var(--gap-sm);
-	width: var(--font-size-lg);
-	}
+.logoutButton {
+	background-color: transparent;
+	border: none;
 }

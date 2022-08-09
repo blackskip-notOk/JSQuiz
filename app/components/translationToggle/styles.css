@@ -1,7 +1,6 @@
 .toggleContainer {
 	display: flex;
 	flex-direction: row;
-	height: 100%;
 	align-items: center;
 }
 
@@ -25,27 +24,17 @@
 }
 
 .flag {
-	width: var(--font-size-lg);
+	width: var(--font-size-md);
 	margin-right: 3px;
 }
 
 .nativeName {
 	font-family: var(--font-display);
-	font-size: var(--font-size-lg);
+	font-size: var(--font-size-md);
 	color: var(--color-links);
 }
 
 .nativeName:hover {
 	color: var(--color-links-hover);
 	cursor: pointer;
-}
-
-@media screen and (max-width: 1024px) {
-	.nativeName {
-		font-size: var(--font-size-md);
-	}
-
-	.flag {
-		width: var(--font-size-md);
-	}
 }
