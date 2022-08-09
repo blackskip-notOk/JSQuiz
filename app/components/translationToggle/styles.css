@@ -1,6 +1,7 @@
 .lngContainer {
 	display: grid;
 	list-style: none;
+	position: relative;
 }
 
 .activeLngButton {
@@ -55,8 +56,8 @@
 .lngMenu_open {
 	display: grid;
 	position: absolute;
-	top: 50px;
-	right: 100px;
+	top: 50%;
+	left: 0;
 }
 
 .lngMenu_close {
