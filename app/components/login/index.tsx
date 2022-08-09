@@ -1,39 +1,25 @@
-import type { LinksFunction, LoaderFunction } from '@remix-run/node';
-import { json } from '@remix-run/node';
-import { Link, useLoaderData } from '@remix-run/react';
+import type { LinksFunction } from '@remix-run/node';
+import { Link } from '@remix-run/react';
+import type { FC } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Route } from '~/constants';
-import { getUser } from '~/utils/getUser';
 import stylesUrl from './style.css';
+import type { LoginProps } from './types';
 
 export const links: LinksFunction = () => {
 	return [{ rel: 'stylesheet', href: stylesUrl }];
-};
-
-type LoaderData = {
-	user: Awaited<ReturnType<typeof getUser>>;
-};
-
-export const loader: LoaderFunction = async ({ request }) => {
-	const user = await getUser(request);
-
-	const data = {
-		user,
-	};
-	return json(data);
 };
 
 export const handle = {
 	i18n: 'login',
 };
 
-export const Login = () => {
+export const Login: FC<LoginProps> = ({ user }) => {
 	const { t } = useTranslation('login');
-	const data = useLoaderData<LoaderData>();
 
-	return data.user ? (
+	return user ? (
 		<div className='user-info'>
-			<span>{t('greeting', { username: data.user.username })}</span>
+			<span>{t('greeting', { username: user.username })}</span>
 			<form action={Route.logout} method='post'>
 				<button type='submit' className='button'>
 					<img src='/images/login/logout.svg' alt='logout icon' className='login' />
