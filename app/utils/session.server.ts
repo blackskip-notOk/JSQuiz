@@ -3,7 +3,7 @@ import { createCookieSessionStorage, redirect } from '@remix-run/node';
 const sessionSecret = process.env.SESSION_SECRET;
 if (!sessionSecret) {
 	throw new Error('SESSION_SECRET must be set');
-}
+};
 
 export const storage = createCookieSessionStorage({
 	cookie: {
@@ -19,7 +19,7 @@ export const storage = createCookieSessionStorage({
 
 export function getUserSession(request: Request) {
 	return storage.getSession(request.headers.get('Cookie'));
-}
+};
 
 export async function createUserSession(userId: string, redirectTo: string) {
 	const session = await storage.getSession();
@@ -31,4 +31,4 @@ export async function createUserSession(userId: string, redirectTo: string) {
 			'Set-Cookie': await storage.commitSession(session),
 		},
 	});
-}
+};

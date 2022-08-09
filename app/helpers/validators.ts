@@ -11,19 +11,19 @@ export function validateUsername(username: unknown, message: string) {
 	if (typeof username !== 'string' || username.length < 3) {
 		return message;
 	}
-};
+}
 
 export function validatePassword(password: unknown, message: string) {
 	if (typeof password !== 'string' || password.length < 6) {
 		return message;
 	}
-};
+}
 
 export function validateRole(role: unknown, loginType: LoginType, message: string) {
-	if ((typeof role !== 'string' || !(role in Role )) && loginType === LoginTypes.register) {
+	if ((typeof role !== 'string' || !(role in Role)) && loginType === LoginTypes.register) {
 		return message;
 	}
-};
+}
 
 export function validateUrl(url: any) {
 	const urls = [Route.games, Route.home, Route.remix];
@@ -31,4 +31,4 @@ export function validateUrl(url: any) {
 		return url;
 	}
 	return Route.home;
-};
+}
