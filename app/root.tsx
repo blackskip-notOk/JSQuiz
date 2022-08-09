@@ -24,12 +24,13 @@ import { links as HeaderNavLinks } from '~/components/headerNav';
 import { links as TranslationToggleLinks } from '~/components/translationToggle';
 import { links as LogoLinks } from '~/components/logo';
 import { links as LoginLinks } from '~/components/login';
-
-type LoaderData = { locale: string };
+import type { RootLoaderData } from './types';
+import { getUser } from './utils/getUser';
 
 export const loader: LoaderFunction = async ({ request }) => {
-	let locale = await i18next.getLocale(request);
-	return json<LoaderData>({ locale });
+	const locale = await i18next.getLocale(request);
+	const user = await getUser(request);
+	return json<RootLoaderData>({ locale, user });
 };
 
 export const handle = {
@@ -83,7 +84,7 @@ function Document({
 	children: ReactNode;
 	title?: string;
 }) {
-	const { locale } = useLoaderData<LoaderData>();
+	const { locale, user } = useLoaderData<RootLoaderData>();
 	const { i18n } = useTranslation();
 	useChangeLanguage(locale);
 
@@ -98,7 +99,7 @@ function Document({
 			</head>
 			<body>
 				<div className='appContainer'>
-					<Header className='header' />
+					<Header className='header' user={user} />
 					<div className='content'>{children}</div>
 					<Footer className='footer' />
 				</div>
