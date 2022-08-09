@@ -49,7 +49,7 @@ export const action: ActionFunction = async ({ request }) => {
 	const role = getRole(form.get('role'));
 	const redirectTo = validateUrl(form.get('redirectTo') || Route.home);
 
-	console.log(role, loginType)
+	console.log(role, loginType);
 
 	if (
 		typeof loginType !== 'string' ||
