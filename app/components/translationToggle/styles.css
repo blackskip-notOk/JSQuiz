@@ -1,31 +1,71 @@
-.toggleContainer {
-	display: flex;
-	flex-direction: row;
-	align-items: center;
+.lngContainer {
+	display: grid;
+	list-style: none;
 }
 
-.toggle {
+.activeLngButton {
 	display: flex;
 	align-items: center;
-	background: transparent;
-	border: none;
-	width: max-content;
 	background-color: transparent;
-	padding: 0 5px;
-	outline: none;
-}
-
-.toggle:focus {
 	border: none;
 }
 
-.toggle:nth-child(1) {
-	border-right: 1px solid var(--color-white);
+.activeLngButton::after {
+	content: '';
+	height: 20px;
+	width: var(--font-size-md);
+	margin-left: calc(var(--gap-sm) / 2);
+	margin-top: calc(var(--gap-sm) / 2);
+	-webkit-mask-image: url('/images/other/chevron.svg');
+	mask-image: url('/images/other/chevron.svg');
+	background-color: var(--color-yellow-500);
+	cursor: pointer;
+}
+
+.activeLng {
+	display: flex;
+	align-items: center;
+}
+
+.activeNativeName {
+	font-family: var(--font-display);
+	font-size: var(--font-size-md);
+	font-weight: 500;
+	color: var(--color-links);
+}
+
+.activeNativeName:hover {
+	color: var(--color-links-hover);
+	cursor: pointer;
 }
 
 .flag {
-	width: var(--font-size-md);
-	margin-right: 3px;
+	width: calc(var(--font-size-md) + 2px);
+	margin-right: calc(var(--gap-sm) / 3);
+}
+
+.lngMenu {
+	list-style: none;
+	width: max-content;
+	padding: var(--gap-sm);
+	border: 1px solid var(--color-blue-500);
+	border-radius: var(--border-radius-sm);
+}
+
+.lngMenu_open {
+	display: grid;
+	position: absolute;
+	top: 50px;
+	right: 100px;
+}
+
+.lngMenu_close {
+	display: none;
+}
+
+.lngButton {
+	background-color: transparent;
+	border: none;
 }
 
 .nativeName {

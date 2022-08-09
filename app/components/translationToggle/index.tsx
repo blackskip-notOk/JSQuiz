@@ -1,3 +1,4 @@
+import { useReducer } from 'react';
 import { useTranslation } from 'react-i18next';
 import type { Language } from '~/i18n/types';
 import { languages } from '~/i18n/types';
@@ -10,23 +11,53 @@ export function links() {
 export const TranslationToggle = () => {
 	const { i18n } = useTranslation();
 
-	const language = Object.keys(languages).map((lng: Language) => {
-		const isLng = i18n.resolvedLanguage === lng;
-		const handleToggle = () => i18n.changeLanguage(lng);
+	const [isOpen, toggleIsOpen] = useReducer((isOpen) => !isOpen, true);
+
+	const activeLng = Object.keys(languages).find(
+		(lng: Language) => i18n.resolvedLanguage === lng,
+	) as Language | undefined;
+
+	const lang = Object.keys(languages).map((lng: Language) => {
+		const handleToggle = () => {
+			i18n.changeLanguage(lng);
+			toggleIsOpen();
+		};
 
 		return (
-			<button
-				key={lng}
-				style={{ fontWeight: isLng ? '500' : '300' }}
-				className='toggle'
-				type='submit'
-				onClick={handleToggle}
-			>
-				<img className='flag' src={`/images/flags/${lng}.png`} alt={`flag ${lng}`} />
-				<span className='nativeName'>{languages[lng].nativeName}</span>
-			</button>
+			<li key={lng} role='menuitem'>
+				<button onClick={handleToggle} className='lngButton'>
+					<span className='nativeName'>
+						<img className='flag' src={`/images/flags/${lng}.png`} alt={`flag ${lng}`} />
+						{languages[lng].nativeName}
+					</span>
+				</button>
+			</li>
 		);
 	});
 
-	return <div className='toggleContainer'>{language}</div>;
+	const handleToggleMenu = () => {
+		toggleIsOpen();
+	};
+
+	const lngMenuClassName = `lngMenu ${isOpen ? 'lngMenu_open' : 'lngMenu_close'}`;
+
+	return (
+		<div className='lngContainer'>
+			{activeLng ? (
+				<button onClick={handleToggleMenu} className='activeLngButton' aria-haspopup='menu'>
+					<div className='activeLng'>
+						<img
+							className='flag'
+							src={`/images/flags/${activeLng}.png`}
+							alt={`flag ${activeLng}`}
+						/>
+						<span className='activeNativeName'>{languages[activeLng].nativeName}</span>
+					</div>
+				</button>
+			) : null}
+			<ul className={lngMenuClassName} role='menu' aria-labelledby='language-menu-button'>
+				{lang}
+			</ul>
+		</div>
+	);
 };
