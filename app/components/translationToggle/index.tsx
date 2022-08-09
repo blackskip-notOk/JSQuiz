@@ -11,7 +11,7 @@ export function links() {
 export const TranslationToggle = () => {
 	const { i18n } = useTranslation();
 
-	const [isOpen, toggleIsOpen] = useReducer((isOpen) => !isOpen, true);
+	const [isOpen, toggleIsOpen] = useReducer((isOpen) => !isOpen, false);
 
 	const activeLng = Object.keys(languages).find(
 		(lng: Language) => i18n.resolvedLanguage === lng,
