@@ -5,15 +5,16 @@ export function getQuestionTheme(value: FormDataEntryValue | null): Theme {
 	// 	return null;
 	// }
 
-    switch (value) {
-        case Theme.HTML:
-            return Theme.HTML
+	switch (value) {
+		case Theme.HTML:
+			return Theme.HTML;
 
-        case Theme.CSS:
-            return Theme.CSS;
+		case Theme.CSS:
+			return Theme.CSS;
 
-        case Theme.JAVASCRIPT:
-            return Theme.JAVASCRIPT;
-        default: return Theme.OTHER;
-    }
-};
+		case Theme.JAVASCRIPT:
+			return Theme.JAVASCRIPT;
+		default:
+			return Theme.OTHER;
+	}
+}

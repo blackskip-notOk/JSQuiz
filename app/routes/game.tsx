@@ -34,9 +34,7 @@ export default function GameRoute() {
 
 	const isQuestions = useMemo(() => !!data.questionListItems.length, [data.questionListItems]);
 
-	const question = data.questionListItems.map((item) => (
-		<Question key={item.id} question={item} />
-	));
+	const question = data.questionListItems.map((item) => <Question key={item.id} question={item} />);
 
 	return (
 		<div className='gameContainer'>
