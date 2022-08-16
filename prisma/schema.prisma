@@ -13,7 +13,7 @@ model User {
   updatedAt    DateTime @updatedAt
   username     String   @unique
   passwordHash String
-  role         Role?
+  role         Role    @default(PLAYER)
   games        Game[]
   questions    Question[]
 }
@@ -22,12 +22,14 @@ model Question {
   id           String   @id @default(uuid())
   createdAt    DateTime @default(now())
   updatedAt    DateTime @updatedAt
-  title        String
+  title        String @unique
+  content      String
+  attachment   Bytes?
   author       User @relation(fields: [authorId], references: [id])
   authorId     String
   theme        Theme
-  games        Game @relation(fields: [gameId], references: [id])
-  gameId       String
+  // games        Game @relation(fields: [gameId], references: [id])
+  // gameId       String
 }
 
 model Game {
@@ -36,7 +38,7 @@ model Game {
   updatedAt  DateTime @updatedAt
   name       String
   content    String
-  questions  Question[]
+  // questions  Question[]
   players    User[]
 }
 

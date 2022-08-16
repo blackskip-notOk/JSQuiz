@@ -51,6 +51,15 @@ export default function GamesRoute() {
 							<span className='logo'>🤪</span>
 							<span className='logo-medium'>J🤪KES</span>
 						</Link>
+						{/* <h1 className='home-link'>
+						{isGames ? (
+							t('headerGames')
+						) : (
+							<Link to={Route.new} title={t('headerNewGame')} aria-label='Create a new game'>
+								{t('headerNoGames')}
+							</Link>
+						)}
+					</h1> */}
 					</h1>
 					{data.user ? (
 						<div className='user-info'>

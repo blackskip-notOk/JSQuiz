@@ -19,8 +19,10 @@ export const Route = {
 	games: 'games',
 	game: 'game',
 	new: 'new',
+	newQuestion: 'newQuestion',
 	play: 'play',
 	remix: 'https://remix.run',
+	question: 'question',
 } as const;
 
 export const LoginTypes = {

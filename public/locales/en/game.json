@@ -1,5 +1,11 @@
 {
     "headerGames": "Results of previous games",
     "headerNoGames": "We haven't added any game yet. Press to create a new game.",
-    "headerNewGame": "JS Quiz | Create new Game"
+    "headerNewGame": "JS Quiz | Create new Game",
+    "newGame": "Create new game",
+    "addNewQuestion": "Add new question",
+    "newQuestion": "New question",
+    "title": "Title:",
+    "author": "Author:",
+    "theme": "Theme:"
 }

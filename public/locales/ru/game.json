@@ -1,5 +1,11 @@
 {
     "headerGames": "Результаты предыдущих игр",
     "headerNoGames": "Мы ещё не добавили ни одной игры. Нажмите чтобы создать новую игру.",
-    "headerNewGame": "JS Quiz | Создай новую игру"
+    "headerNewGame": "JS Quiz | Создай новую игру",
+    "newGame": "Создай игру",
+    "addNewQuestion": "Добавить вопрос",
+    "newQuestion": "Новый вопрос",
+    "title": "Заголовок:",
+    "author": "Автор:",
+    "theme": "Тема:"
 }

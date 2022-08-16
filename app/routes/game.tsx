@@ -1,35 +1,26 @@
-import type { Game } from '@prisma/client';
 import type { LinksFunction, LoaderFunction } from '@remix-run/node';
 import { json } from '@remix-run/node';
-import { Outlet, Link, useLoaderData } from '@remix-run/react';
+import { Outlet, Link, useLoaderData, Form } from '@remix-run/react';
+import { useMemo } from 'react';
 import { useTranslation } from 'react-i18next';
+import { Question } from '~/components/question';
 import { Route } from '~/constants';
 
 import stylesUrl from '~/styles/game.css';
+import type { GameLoaderData } from '~/types';
 import { db } from '~/utils/db.server';
-import { getUser } from '~/utils/getUser';
 
 export const links: LinksFunction = () => {
 	return [{ rel: 'stylesheet', href: stylesUrl }];
 };
 
-type LoaderData = {
-	user: Awaited<ReturnType<typeof getUser>>;
-	gameListItems: Array<Pick<Game, 'id' | 'name'>>;
-};
-
 export const loader: LoaderFunction = async ({ request }) => {
-	const gameListItems = await db.game.findMany({
-		take: 5,
-		select: { id: true, name: true },
+	const questionListItems = await db.question.findMany({
+		select: { id: true, title: true, theme: true, content: true },
 		orderBy: { createdAt: 'desc' },
 	});
-	const user = await getUser(request);
 
-	const data = {
-		gameListItems,
-		user,
-	};
+	const data = { questionListItems };
 	return json(data);
 };
 
@@ -39,48 +30,39 @@ export const handle = {
 
 export default function GameRoute() {
 	const { t } = useTranslation('game');
-	const data = useLoaderData<LoaderData>();
+	const data = useLoaderData<GameLoaderData>();
 
-	const game = data.gameListItems.map((item) => (
-		<li key={item.id}>
-			<Link to={item.id} prefetch='intent'>
-				{item.name}
-			</Link>
-		</li>
+	const isQuestions = useMemo(() => !!data.questionListItems.length, [data.questionListItems]);
+
+	const question = data.questionListItems.map((item) => (
+		<Question key={item.id} question={item} />
 	));
 
-	const isGames = !!game.length;
-
 	return (
-		<div className='games-layout'>
-			<header className='games-header'>
-				<div className='container'>
-					<h1 className='home-link'>
-						{isGames ? (
-							t('headerGames')
-						) : (
-							<Link to={Route.new} title={t('headerNewGame')} aria-label='Create a new game'>
-								{t('headerNoGames')}
-							</Link>
-						)}
-					</h1>
-				</div>
+		<div className='gameContainer'>
+			<header className='headerGame'>
+				<h1>{t('newGame')}</h1>
 			</header>
-			<main className='games-main'>
-				<div className='container'>
-					<div className='games-list'>
-						<Link to='.'>Get a random joke</Link>
-						<p>Here are a few more games to check out:</p>
-						<ul>{game}</ul>
-						<Link to='new' className='button'>
-							Add your own
-						</Link>
-					</div>
-					<div className='games-outlet'>
-						<Outlet />
-					</div>
-				</div>
-			</main>
+
+			{isQuestions ? (
+				<Form method='post' className='form'>
+					{/* <label htmlFor='question-select' className='selectLabel'>
+						<select id='question-select' name='question' defaultValue=''>
+							<option value='' disabled>
+								{t('selectQuestion')}
+							</option>
+							{question}
+						</select>
+					</label> */}
+					<ul>{question}</ul>
+				</Form>
+			) : null}
+			<Link to={Route.newQuestion} className='button'>
+				{t('addNewQuestion')}
+			</Link>
+			<div className='game-outlet'>
+				<Outlet />
+			</div>
 		</div>
 	);
 }
