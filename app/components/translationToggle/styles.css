@@ -55,8 +55,13 @@
 .lngMenu_open {
 	display: grid;
 	position: absolute;
+<<<<<<< HEAD
 	top: 50px;
 	right: 100px;
+=======
+	top: 50%;
+	left: 0;
+>>>>>>> 3e4b807103c7194813f975cce165d515f41eab47
 }
 
 .lngMenu_close {
